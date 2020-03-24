@@ -1,0 +1,30 @@
+{
+  "extends": ["airbnb-base", "plugin:prettier/recommended"],
+  "plugins": ["spellcheck", "prettier"],
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "rules": {
+    "spellcheck/spell-checker": [
+      1,
+      {
+        "comments": false,
+        "strings": true,
+        "identifiers": true,
+        "lang": "en_US",
+        "skipWords": ["pikeman", "civs"],
+        "minLength": 3
+      }
+    ],
+    "prettier/prettier": "error",
+    "import/prefer-default-export": 0,
+    "class-methods-use-this": 1,
+    "no-alert": 0,
+    "no-param-reassign": 0,
+    "no-return-assign": 0,
+    "no-shadow": 0,
+    "consistent-return": 0,
+    "no-throw-literal": 0
+  }
+}
