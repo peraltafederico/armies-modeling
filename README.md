@@ -1,6 +1,6 @@
-# Army Game
+# Armies Modeling
 
-Modeling armies challenge!
+Armies modeling challenge!
 
 ## Getting Started
 
