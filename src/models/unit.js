@@ -17,7 +17,11 @@ export default class Unit {
     const index = units.indexOf(this.type)
 
     if (index < units.length - 1) {
-      Object.assign(this, new Unit(units[index + 1]))
+      const newUnit = new Unit(units[index + 1])
+
+      newUnit.strengthPoints += this.strengthPoints
+
+      Object.assign(this, newUnit)
     }
   }
 }

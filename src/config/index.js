@@ -12,7 +12,7 @@ export const unitsConfig = {
     strengthPoints: 5,
     pointsByTraining: 3,
     trainingCost: 10,
-    transformingCost: 900
+    transformingCost: 30
   },
   ARCHER: {
     strengthPoints: 10,
