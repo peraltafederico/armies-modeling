@@ -51,31 +51,47 @@ export default class Army {
   }
 
   battle(army) {
-    const armyAPoints = this.getPoints()
-    const armyBPoints = army.getPoints()
+    if (this !== army) {
+      const armyAPoints = this.getPoints()
+      const armyBPoints = army.getPoints()
 
-    if (armyAPoints !== armyBPoints) {
-      const winner = armyAPoints > armyBPoints ? this : army
-      const loser = armyAPoints < armyBPoints ? this : army
+      if (armyAPoints !== armyBPoints) {
+        const winner = armyAPoints > armyBPoints ? this : army
+        const loser = armyAPoints < armyBPoints ? this : army
 
-      loser.units
-        .sort((a, b) => b.strengthPoints - a.strengthPoints)
-        .splice(0, 2)
+        loser.units
+          .sort((a, b) => b.strengthPoints - a.strengthPoints)
+          .splice(0, 2)
 
-      winner.battleHistory.push({ enemy: loser.civilization, result: VICTORY })
-      loser.battleHistory.push({ enemy: winner.civilization, result: DEFEAT })
+        winner.battleHistory.push({
+          enemy: loser.civilization,
+          result: VICTORY
+        })
 
-      winner.goldCoins += GOLD_COINS_WHEN_WINNING_A_BATTLE
-    } else {
-      this.units
-        .sort((a, b) => a.strengthPoints - b.strengthPoints)
-        .splice(0, 1)
-      army.units
-        .sort((a, b) => a.strengthPoints - b.strengthPoints)
-        .splice(0, 1)
+        loser.battleHistory.push({
+          enemy: winner.civilization,
+          result: DEFEAT
+        })
 
-      this.battleHistory.push({ enemy: army.civilization, result: TIE })
-      army.battleHistory.push({ enemy: this.civilization, result: TIE })
+        winner.goldCoins += GOLD_COINS_WHEN_WINNING_A_BATTLE
+      } else {
+        this.units
+          .sort((a, b) => a.strengthPoints - b.strengthPoints)
+          .splice(0, 1)
+        army.units
+          .sort((a, b) => a.strengthPoints - b.strengthPoints)
+          .splice(0, 1)
+
+        this.battleHistory.push({
+          enemy: army.civilization,
+          result: TIE
+        })
+
+        army.battleHistory.push({
+          enemy: this.civilization,
+          result: TIE
+        })
+      }
     }
   }
 }
